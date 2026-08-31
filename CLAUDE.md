@@ -16,3 +16,7 @@ There is no build, lint, or test step — each `.html` file is fully self-contai
 
 - Keep each concept a single self-contained `.html` file (light/dark theme aware, per the artifact-design conventions already used in `hero-concept.html`) rather than splitting into separate CSS/JS files — there's no build step to assemble them.
 - Note any placeholder or sample data directly in the file (as `hero-concept.html` does) so it's obvious what still needs a real number or asset before it's usable in Wix.
+
+## Version control
+
+This repo is tracked in git and pushed to a public GitHub remote (`origin`, with GitHub Pages serving from `master`). Commit and push regularly as work happens — after each meaningful change, not just at the end of a session — so the work is never only sitting uncommitted locally. Write clean, specific commit messages that explain *why* a change was made, not just what changed.
