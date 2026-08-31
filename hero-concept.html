@@ -1,0 +1,538 @@
+<title>Datanest Hero Concept</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root {
+    --paper: #fbfbfd;
+    --panel: #ffffff;
+    --panel-tint: #f2f3fa;
+    --ink: #0b0d1a;
+    --ink-muted: #5b5f73;
+    --line: #e3e4ee;
+    --blue: #1e1be6;
+    --blue-soft: #cfd0fb;
+    --blue-mid: #8b89f2;
+    --gold: #b8863a;
+    --gold-soft: #f4e6cc;
+    --badge-ink: #17140a;
+    --comic-paper: #fff6e0;
+    --comic-red: #e9432c;
+    --comic-yellow: #f6c435;
+    --shadow: 0 1px 2px rgba(11,13,26,0.04), 0 12px 32px -16px rgba(11,13,26,0.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0a0b13;
+      --panel: #12141f;
+      --panel-tint: #171a29;
+      --ink: #eef0f6;
+      --ink-muted: #9a9db3;
+      --line: #262a3c;
+      --blue: #6f6dff;
+      --blue-soft: #2c2b5c;
+      --blue-mid: #4c4ad1;
+      --gold: #e0b968;
+      --gold-soft: #3a3020;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 20px 48px -20px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0a0b13;
+    --panel: #12141f;
+    --panel-tint: #171a29;
+    --ink: #eef0f6;
+    --ink-muted: #9a9db3;
+    --line: #262a3c;
+    --blue: #6f6dff;
+    --blue-soft: #2c2b5c;
+    --blue-mid: #4c4ad1;
+    --gold: #e0b968;
+    --gold-soft: #3a3020;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 20px 48px -20px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); }
+  a { color: var(--blue); }
+  a:hover { color: var(--gold); }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .intro {
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin: 0 0 10px;
+  }
+  .intro h1 {
+    font-family: "Space Grotesk", ui-sans-serif, sans-serif;
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .intro p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* --- Mockup frame --- */
+  .frame {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .frame-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .frame-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .frame-logo .mark {
+    width: 18px; height: 18px;
+    border: 1.6px solid var(--gold);
+    border-radius: 4px;
+    position: relative;
+  }
+  .frame-logo .mark::after {
+    content: "";
+    position: absolute; inset: 3px;
+    border: 1.2px solid var(--gold);
+    border-radius: 2px;
+  }
+  .frame-nav {
+    display: flex;
+    gap: 22px;
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+  .frame-nav span:first-child { color: var(--ink); font-weight: 600; }
+  .frame-menu-dot {
+    display: none;
+    width: 30px; height: 22px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 40px;
+    padding: 56px 44px;
+    align-items: center;
+  }
+  .hero-copy .kicker {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 30px);
+    color: var(--blue);
+    margin: 0 0 6px;
+  }
+  .hero-copy h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: clamp(19px, 2.4vw, 23px);
+    line-height: 1.3;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .hero-copy p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    max-width: 42ch;
+    margin: 0 0 24px;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: #fff;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 22px;
+    border-radius: 8px;
+    border: none;
+  }
+
+  /* --- Dashboard graphic: comic panel --- */
+  .dash {
+    position: relative;
+    background: var(--comic-paper);
+    border: 4px solid var(--badge-ink);
+    border-radius: 8px;
+    padding: 20px 22px 18px;
+    box-shadow: 7px 7px 0 var(--badge-ink);
+    overflow: visible;
+  }
+  .dash-top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .dash-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--badge-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* --- Pop-art: halftone paper grain + a burst that breaks the panel --- */
+  .halftone {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--badge-ink) 1.3px, transparent 1.4px);
+    background-size: 13px 13px;
+    opacity: 0.08;
+    pointer-events: none;
+    border-radius: 4px;
+  }
+  .halftone-pop {
+    position: absolute;
+    top: -6px; left: -6px;
+    width: 96px; height: 76px;
+    background-image: radial-gradient(var(--comic-red) 2.4px, transparent 2.5px);
+    background-size: 12px 12px;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .bubble {
+    position: absolute;
+    top: -26px; left: 26px;
+    z-index: 3;
+    background: #fff;
+    border: 3px solid var(--badge-ink);
+    border-radius: 14px;
+    padding: 6px 14px;
+    transform: rotate(-3deg);
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+    color: var(--badge-ink);
+    white-space: nowrap;
+  }
+  .bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -9px; left: 22px;
+    width: 14px; height: 14px;
+    background: #fff;
+    border-right: 3px solid var(--badge-ink);
+    border-bottom: 3px solid var(--badge-ink);
+    transform: rotate(45deg) skew(-6deg,-6deg);
+  }
+  .pop-badge {
+    position: absolute;
+    top: -38px; right: -34px;
+    z-index: 3;
+    width: 118px; height: 118px;
+    transform: rotate(-13deg);
+  }
+  .pop-badge .star { fill: var(--comic-yellow); stroke: var(--badge-ink); stroke-width: 3.4; stroke-linejoin: round; }
+  .pop-badge text {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    fill: var(--badge-ink);
+    text-anchor: middle;
+  }
+  .chart {
+    position: relative;
+    z-index: 2;
+    height: 118px;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 2px solid var(--badge-ink);
+  }
+  .chart .grid-line {
+    position: absolute;
+    left: 0; right: 0;
+    border-top: 1px dashed rgba(23,20,10,0.25);
+  }
+  .bar {
+    flex: 1;
+    background: var(--blue);
+    border: 2.5px solid var(--badge-ink);
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    min-width: 8px;
+  }
+  .bar.hi { background: var(--comic-red); }
+  .legend {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--badge-ink);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .kpi-row {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 2px solid var(--badge-ink);
+  }
+  .kpi-row div { text-align: left; }
+  .kpi-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--badge-ink);
+  }
+  .kpi-lbl {
+    font-size: 10.5px;
+    color: var(--badge-ink);
+    opacity: 0.65;
+    margin-top: 2px;
+  }
+  .sample-note {
+    position: relative;
+    z-index: 2;
+    font-size: 10.5px;
+    color: var(--badge-ink);
+    opacity: 0.6;
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  /* --- Trust strip --- */
+  .trust {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+  }
+  .trust-tile {
+    padding: 24px 28px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .trust-tile + .trust-tile { border-left: 1px solid var(--line); }
+  .trust-tile svg { flex: none; margin-top: 2px; color: var(--blue); }
+  .trust-num {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.3;
+  }
+  .trust-num .fill {
+    color: var(--gold);
+    border-bottom: 1.5px dashed var(--gold);
+  }
+  .trust-sub {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+  }
+
+  /* --- Annotations --- */
+  .notes {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .note {
+    padding: 18px 20px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .note-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .note h3 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .note p {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  .footnote {
+    margin-top: 32px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    line-height: 1.6;
+  }
+  .footnote strong { color: var(--ink); }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 32px 22px; }
+    .frame-nav { display: none; }
+    .frame-menu-dot { display: block; }
+    .trust { grid-template-columns: 1fr; }
+    .trust-tile + .trust-tile { border-left: none; border-top: 1px solid var(--line); }
+    .notes { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">Concept · Above the fold</p>
+    <h1>Νέο hero + trust strip — το pop-art μένει, αλλά σε δικά σου χρώματα</h1>
+    <p>Κράτησα το pop-art ένστικτο (σωστό instinct — τα data sites όλα μοιάζουν ίδια), αλλά το συμπύκνωσα σε ένα μικρό comic-style sticker πάνω σε πραγματικό dashboard, στο navy/χρυσό/μπλε branding σου αντί για ασύνδετο πολύχρωμο illustration. Και μια λωρίδα εμπιστοσύνης κάτω από το hero.</p>
+  </div>
+
+  <div class="frame">
+    <div class="frame-bar">
+      <div class="frame-logo"><span class="mark"></span> datanest</div>
+      <div class="frame-nav">
+        <span>Home</span><span>About</span><span>Services</span><span>Portfolio</span><span>Let's Talk</span>
+      </div>
+      <div class="frame-menu-dot"></div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="kicker">Welcome to Datanest</p>
+        <h2>Your Partner in Data&#8209;Driven Success</h2>
+        <p>Feeling lost in a sea of data? We understand. Many businesses struggle with making sense of their data. You need clear, actionable insights to make informed decisions. That's where we come in.</p>
+        <span class="cta">See What You're Losing &rsaquo;</span>
+      </div>
+
+      <div class="dash">
+        <div class="halftone"></div>
+        <div class="halftone-pop"></div>
+        <div class="bubble">AT A GLANCE</div>
+        <svg class="pop-badge" viewBox="0 0 100 100" aria-hidden="true">
+          <polygon class="star" points="50,4 65.9,28.1 93.75,35.78 75.68,58.34 77.04,87.21 50,77 22.96,87.21 24.32,58.34 6.25,35.79 34.13,28.16"/>
+          <text x="50" y="46" font-size="17">+18%</text>
+          <text x="50" y="61" font-size="9">vs. target</text>
+        </svg>
+        <div class="dash-top">
+          <span class="dash-title">Revenue vs. Target</span>
+        </div>
+        <div class="chart">
+          <div class="grid-line" style="bottom:0"></div>
+          <div class="grid-line" style="bottom:33%"></div>
+          <div class="grid-line" style="bottom:66%"></div>
+          <div class="bar" style="height:38%"></div>
+          <div class="bar" style="height:48%"></div>
+          <div class="bar" style="height:44%"></div>
+          <div class="bar" style="height:60%"></div>
+          <div class="bar" style="height:72%"></div>
+          <div class="bar" style="height:84%"></div>
+          <div class="bar hi" style="height:96%"></div>
+        </div>
+        <div class="legend">
+          <span><i class="swatch" style="background:var(--blue);border:2px solid var(--badge-ink)"></i>Actual</span>
+          <span><i class="swatch" style="background:var(--comic-red);border:2px solid var(--badge-ink)"></i>Peak</span>
+        </div>
+        <div class="kpi-row">
+          <div>
+            <div class="kpi-num">142K&euro;</div>
+            <div class="kpi-lbl">Projected Q4</div>
+          </div>
+          <div>
+            <div class="kpi-num">6 mo</div>
+            <div class="kpi-lbl">Trend window</div>
+          </div>
+          <div>
+            <div class="kpi-num">93%</div>
+            <div class="kpi-lbl">Forecast accuracy</div>
+          </div>
+        </div>
+        <p class="sample-note">Δείγμα δεδομένων — μόνο για εικόνα. Αντικατέστησέ το με screenshot από πραγματικό dashboard πελάτη σου.</p>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="trust-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="4" height="10" rx="1"/><rect x="10" y="6" width="4" height="14" rx="1"/><rect x="16" y="13" width="4" height="7" rx="1"/></svg>
+        <div>
+          <div class="trust-num"><span class="fill">[X]+</span> Dashboards Delivered</div>
+          <div class="trust-sub">&rarr; βάλε τον πραγματικό αριθμό σου</div>
+        </div>
+      </div>
+      <div class="trust-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg>
+        <div>
+          <div class="trust-num"><span class="fill">[X]</span> Industries Served</div>
+          <div class="trust-sub">&rarr; βάλε τον πραγματικό αριθμό σου</div>
+        </div>
+      </div>
+      <div class="trust-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+        <div>
+          <div class="trust-num">Free 30&ndash;60 min Consultation</div>
+          <div class="trust-sub">&#10003; ήδη επιβεβαιωμένο από το FAQ σου</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note">
+      <div class="note-num">01</div>
+      <h3>Pop-art, αλλά μικρό &amp; στο brand</h3>
+      <p>Από ολόκληρο πολύχρωμο illustration σε ένα comic starburst sticker (halftone dots, μαύρο περίγραμμα) σε navy/χρυσό — κρατάει την προσωπικότητα χωρίς να συγκρούεται με το logo.</p>
+    </div>
+    <div class="note">
+      <div class="note-num">02</div>
+      <h3>Trust strip</h3>
+      <p>3 μικρά στοιχεία αξιοπιστίας αμέσως κάτω από το hero. Τα δύο με [X] χρειάζονται τον πραγματικό σου αριθμό.</p>
+    </div>
+    <div class="note">
+      <div class="note-num">03</div>
+      <h3>Δείγμα δεξιοτήτων</h3>
+      <p>Το ίδιο το γράφημα αποδεικνύει ότι φτιάχνεις dashboards — καλύτερο "proof" από οποιοδήποτε κείμενο.</p>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <strong>Σημείωση:</strong> Αυτό είναι mockup αναφοράς, όχι έτοιμο PNG για upload. Για το πραγματικό site: (1) φτιάξε το dashboard γράφημα ως πραγματικό screenshot από Power BI/Tableau δικού σου project ή ζήτα μου να στο φτιάξω ως εικόνα, (2) γράψε τους πραγματικούς αριθμούς στα δύο [X] tiles, (3) recreate το layout μέσα στο Wix Editor με τα ίδια χρώματα (μπλε &amp; χρυσό) που ήδη έχεις.
+  </div>
+</div>
